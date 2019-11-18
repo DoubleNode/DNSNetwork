@@ -1,0 +1,57 @@
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+    - Pods
+
+disabled_rules:
+    - colon
+    - nesting
+    - opening_brace
+    - todo
+    - trailing_comma
+
+opt_in_rules:
+    - control_statement
+    - empty_count
+    - trailing_newline
+    - colon
+    - comma
+
+type_body_length:
+    - 300 # warning
+    - 500 # error
+
+line_length:
+    - 130 # warning
+    - 150 # error
+
+file_length:
+    - 500 # warning
+    - 800 # error
+
+large_tuple: # warn user when using 3 values in tuple, give error if there are 4
+- 3
+- 4
+
+# naming rules can set warnings/errors for min_length and max_length
+# additionally they can set excluded names
+identifier_name:
+    min_length: 2 # only warning
+    max_length: # warning and error
+        warning: 50
+        error: 55
+    excluded:
+        - i
+        - x
+        - y
+
+# naming rules can set warnings/errors for min_length and max_length
+# additionally they can set excluded names
+type_name:
+    min_length: 4 # only warning
+    max_length: # warning and error
+        warning: 50
+        error: 55
+    excluded:
+        - iPhone # excluded via string
+        - C
+
+reporter: "xcode"

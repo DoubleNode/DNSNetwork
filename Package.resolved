@@ -1,0 +1,70 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Alamofire",
+        "repositoryURL": "https://github.com/Alamofire/Alamofire.git",
+        "state": {
+          "branch": null,
+          "revision": "2cbf59935fbb1f26e352ce4db53f1cf9408d5313",
+          "version": "5.0.0-rc.3"
+        }
+      },
+      {
+        "package": "AlamofireImage",
+        "repositoryURL": "https://github.com/Alamofire/AlamofireImage.git",
+        "state": {
+          "branch": null,
+          "revision": "249c411e512e3017b6b426d099db448289db7eb3",
+          "version": "4.0.0-beta.6"
+        }
+      },
+      {
+        "package": "AtomicSwift",
+        "repositoryURL": "https://github.com/MarioIannotta/AtomicSwift.git",
+        "state": {
+          "branch": null,
+          "revision": "e2913c6e873bc60237dd138ba0db9b109016dd80",
+          "version": "1.2.1"
+        }
+      },
+      {
+        "package": "DNSCore",
+        "repositoryURL": "https://github.com/DoubleNode/DNSCore.git",
+        "state": {
+          "branch": null,
+          "revision": "3b4020b75d06180066900ee6e08b3f5de6fa12de",
+          "version": "1.0.3"
+        }
+      },
+      {
+        "package": "DNSCoreThreading",
+        "repositoryURL": "https://github.com/DoubleNode/DNSCoreThreading.git",
+        "state": {
+          "branch": null,
+          "revision": "aaf603f768e0da8917a3f353222a7f190842c33f",
+          "version": "1.0.2"
+        }
+      },
+      {
+        "package": "DNSProtocols",
+        "repositoryURL": "https://github.com/DoubleNode/DNSProtocols.git",
+        "state": {
+          "branch": null,
+          "revision": "ab6b7cb5b5ab312349b5800e74b103dedc8e65fc",
+          "version": "1.0.0"
+        }
+      },
+      {
+        "package": "Hippolyte",
+        "repositoryURL": "https://github.com/JanGorman/Hippolyte.git",
+        "state": {
+          "branch": null,
+          "revision": "bc3ec9bb8709576ffc6c2aa12e95f62494781bd5",
+          "version": "1.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
