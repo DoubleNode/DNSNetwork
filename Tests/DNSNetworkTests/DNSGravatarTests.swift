@@ -182,7 +182,7 @@ class DNSGravatarTests: XCTestCase {
             self.stubManager.start()
 
             let stubCalled = self.expectation(description: "stub called")
-            
+
             let value: String = "loadImage_withInvalidResponse@doublenode.com"
             self.sut.email = value
 

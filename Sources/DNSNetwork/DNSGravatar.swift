@@ -43,7 +43,7 @@ public class DNSGravatar {
             do {
                 block?(try response.result.get())
             } catch {
-                
+
             }
         }
     }

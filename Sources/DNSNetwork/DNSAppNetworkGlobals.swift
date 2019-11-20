@@ -46,15 +46,16 @@ public class DNSAppNetworkGlobals: DNSAppGlobals {
     // MARK: - Utility methods
 
     func utilityStartListening() {
+        // swiftlint:disable:next line_length
         reachabilityManager?.startListening(onUpdatePerforming: { (status: NetworkReachabilityManager.NetworkReachabilityStatus) in
             self.utilityReachabilityStatusChanged(status: status)
         })
     }
-    
+
     func utilityStopListening() {
         reachabilityManager?.stopListening()
     }
-    
+
     func utilityReachabilityStatusChanged(status: NetworkReachabilityManager.NetworkReachabilityStatus) {
         switch status {
         case .notReachable:

@@ -51,8 +51,8 @@
         "repositoryURL": "https://github.com/DoubleNode/DNSProtocols.git",
         "state": {
           "branch": null,
-          "revision": "ab6b7cb5b5ab312349b5800e74b103dedc8e65fc",
-          "version": "1.0.0"
+          "revision": "530911f1023d1d774409f008364b7030302eb565",
+          "version": "1.0.2"
         }
       },
       {
@@ -60,8 +60,8 @@
         "repositoryURL": "https://github.com/JanGorman/Hippolyte.git",
         "state": {
           "branch": null,
-          "revision": "bc3ec9bb8709576ffc6c2aa12e95f62494781bd5",
-          "version": "1.0.0"
+          "revision": "215191ff9e13160333157900d7954ef62054d64e",
+          "version": "1.1.0"
         }
       }
     ]

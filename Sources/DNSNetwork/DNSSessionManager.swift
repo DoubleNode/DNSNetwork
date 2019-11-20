@@ -10,12 +10,12 @@ import Alamofire
 import Foundation
 
 public protocol DNSSessionManagerProtocol {
-    func success(with httpResponse: HTTPURLResponse, and responseObject: Any?) -> Void
+    func success(with httpResponse: HTTPURLResponse, and responseObject: Any?)
 
-    func serverError(with httpResponse: HTTPURLResponse, and responseObject: Any?) -> Void
-    func dataError(with errorData: Data, and errorMessage: String) -> Void
-    func unknownError(with error: Error) -> Void
-    func noResponseError() -> Void
+    func serverError(with httpResponse: HTTPURLResponse, and responseObject: Any?)
+    func dataError(with errorData: Data, and errorMessage: String)
+    func unknownError(with error: Error)
+    func noResponseError()
 }
 
 /*

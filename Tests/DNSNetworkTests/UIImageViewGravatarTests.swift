@@ -64,10 +64,10 @@ class UIImageViewGravatarTests: XCTestCase {
             
             let value: String = "loadImage_withValidEmail@doublenode.com"
 
-            self.sut.dnsLoadGravatar(for: value) { (success) in
+            self.sut.dnsLoadGravatar(for: value) { (_) in
                 stubCalled.fulfill()
             }
-                
+
             self.wait(for: [stubCalled], timeout: 10.0)
 
             XCTAssertNotNil(self.sut.image)
