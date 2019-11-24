@@ -70,7 +70,7 @@ public class DNSAppNetworkGlobals: DNSAppGlobals {
                 _ = DNSThreadingGroup.run(block: { threadingGroup in
                     for domain: String in checkDomains {
                         let thread = DNSThread { thread in
-                            let _ = URLSessionConfiguration.default
+                            _ = URLSessionConfiguration.default
 
                             let url = URL(string: "https://\(domain)/library/test/success.html")
                             guard url != nil else {

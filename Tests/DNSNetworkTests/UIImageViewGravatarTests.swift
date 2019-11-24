@@ -38,14 +38,14 @@ class UIImageViewGravatarTests: XCTestCase {
         let thisSourceFile = URL(fileURLWithPath: #file)
         let thisDirectory = thisSourceFile.deletingLastPathComponent()
         let localPathURL = thisDirectory.appendingPathComponent("Assets/\(filename)")
-        
+
         return localPathURL
     }
-    
+
     func test_dnsLoadGravatar_withValidEmailAndBlock_shouldHaveValidImage() throws {
         let path = localPath(for: "DNSGravatar.loadImage001.validImageResponse.jpg")
         let data = try Data(contentsOf: path!)
-            
+
         _ = DNSSynchronize {
             let response = StubResponse.Builder()
                 .stubResponse(withStatusCode: 200)
@@ -61,7 +61,7 @@ class UIImageViewGravatarTests: XCTestCase {
             self.stubManager.start()
 
             let stubCalled = self.expectation(description: "stub called")
-            
+
             let value: String = "loadImage_withValidEmail@doublenode.com"
 
             self.sut.dnsLoadGravatar(for: value) { (_) in
