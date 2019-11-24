@@ -23,9 +23,9 @@ public class DNSSessionManager: SessionManager {
 
     required init() {
         super.init()
-        
+
         self.delegate.sessionDidFinishEventsForBackgroundURLSession = { session in
-            
+
         }
     }
 
@@ -33,7 +33,7 @@ public class DNSSessionManager: SessionManager {
     public func sendTask(with request: URLRequestConvertible) -> DataRequest {
         return super.request(request)
     }
-    
+
     /*
     - (NSURLSessionDataTask*)sendTaskWithRequest:(NSURLRequest*)request
                               serverErrorHandler:(void(^ _Nullable)(NSHTTPURLResponse* _Nullable httpResponse, id _Nullable responseObject))serverErrorHandler
@@ -57,7 +57,7 @@ public class DNSSessionManager: SessionManager {
                     if (dataError)
                     {
                         DNCLog(DNCLL_Info, DNCLD_Networking, @"DATAERROR - %@", response.URL);
-                        
+
                         if (dataError.code == NSURLErrorTimedOut)
                         {
                             NSHTTPURLResponse*  httpResponse;
@@ -65,12 +65,12 @@ public class DNSSessionManager: SessionManager {
                             {
                                 httpResponse    = (NSHTTPURLResponse*)response;
                             }
-                            
+
                             if (!responseObject)
                             {
                                 responseObject  = [NSString stringWithFormat:@"{ \"error\" : \"%@\", \"url\" : \"%@\" }", dataError.localizedDescription, dataError.userInfo[NSURLErrorFailingURLStringErrorKey]];
                             }
-                            
+
                             DNCLog(DNCLL_Info, DNCLD_Networking, @"WILLRETRY - %@", response.URL);
                             [DNCThread afterDelay:0.2f
                                               run:
@@ -80,7 +80,7 @@ public class DNSSessionManager: SessionManager {
                              }];
                             return;
                         }
-                        
+
                         NSData*    errorData   = dataError.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
                         if (errorData.length)
                         {
@@ -88,7 +88,7 @@ public class DNSSessionManager: SessionManager {
                                                                          encoding:NSASCIIStringEncoding];
                             DNCLog(DNCLL_Debug, DNCLD_General, @"data=%@", errorString);
                         }
-                        
+
                         if ([response isKindOfClass:NSHTTPURLResponse.class])
                         {
                             NSHTTPURLResponse*    httpResponse    = (NSHTTPURLResponse*)response;
@@ -104,7 +104,7 @@ public class DNSSessionManager: SessionManager {
                                 return;
                             }
                         }
-                        
+
                         if (errorData)
                         {
                             id jsonData = [NSJSONSerialization JSONObjectWithData:errorData
@@ -150,22 +150,22 @@ public class DNSSessionManager: SessionManager {
                                 {
                                     errorMessage    = [self stringFromString:dataError.userInfo[NSLocalizedDescriptionKey]];
                                 }
-                                
+
                                 dataErrorHandler ? dataErrorHandler((jsonData ?: errorData), errorMessage) : nil;
                                 return;
                             }
                         }
-                        
+
                         unknownErrorHandler ? unknownErrorHandler(dataError) : nil;
                         return;
                     }
-                    
+
                     if (!responseObject)
                     {
                         noResponseBodyHandler ? noResponseBodyHandler() : nil;
                         return;
                     }
-                    
+
                     completionHandler ? completionHandler(response, responseObject) : nil;
                 }];
     }

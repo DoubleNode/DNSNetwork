@@ -36,10 +36,10 @@ class DNSGravatarTests: XCTestCase {
         let thisSourceFile = URL(fileURLWithPath: #file)
         let thisDirectory = thisSourceFile.deletingLastPathComponent()
         let localPathURL = thisDirectory.appendingPathComponent("Assets/\(filename)")
-        
+
         return localPathURL
     }
-    
+
     func test_gravatarUrl_withStringNil_shouldReturnDefaultUrlWithRatingGAndDefaultTypeMM() {
         let value: String? = nil
         sut.email = value
@@ -131,7 +131,7 @@ class DNSGravatarTests: XCTestCase {
     func test_loadImage_withValidEmail_shouldHaveValidImage() throws {
         let path = localPath(for: "DNSGravatar.loadImage001.validImageResponse.jpg")
         let data = try Data(contentsOf: path!)
-            
+
         _ = DNSSynchronize {
             let response = StubResponse.Builder()
                 .stubResponse(withStatusCode: 200)
