@@ -29,6 +29,33 @@
         }
       },
       {
+        "package": "DNSCore",
+        "repositoryURL": "git@github.com:DoubleNode/DNSCore.git",
+        "state": {
+          "branch": null,
+          "revision": "ed82cc9f5cc80e00232a5826bbb41a240222a069",
+          "version": "1.0.4"
+        }
+      },
+      {
+        "package": "DNSCoreThreading",
+        "repositoryURL": "git@github.com:DoubleNode/DNSCoreThreading.git",
+        "state": {
+          "branch": null,
+          "revision": "aaf603f768e0da8917a3f353222a7f190842c33f",
+          "version": "1.0.2"
+        }
+      },
+      {
+        "package": "DNSProtocols",
+        "repositoryURL": "git@github.com:DoubleNode/DNSProtocols.git",
+        "state": {
+          "branch": null,
+          "revision": "960055d6d34b8d7663e2bf76e2360eab8f27abbb",
+          "version": "1.0.5"
+        }
+      },
+      {
         "package": "Hippolyte",
         "repositoryURL": "https://github.com/JanGorman/Hippolyte.git",
         "state": {
