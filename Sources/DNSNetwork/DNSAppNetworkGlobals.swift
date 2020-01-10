@@ -8,6 +8,7 @@
 
 import Alamofire
 import AtomicSwift
+import DNSAppCore
 import DNSCore
 import DNSCoreThreading
 import Foundation
