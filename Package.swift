@@ -22,7 +22,7 @@ let package = Package(
         .package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.0.2"),
         .package(url: "https://github.com/Alamofire/AlamofireImage.git", from: "4.0.0-beta.6"),
         .package(url: "https://github.com/MarioIannotta/AtomicSwift.git", from: "1.0.0"),
-        .package(url: "https://github.com/DoubleNode/DNSAppCore.git", from: "1.0.0"),
+        .package(url: "https://github.com/DoubleNode/DNSAppCore.git", from: "1.0.4"),
         .package(url: "https://github.com/JanGorman/Hippolyte.git", from: "1.0.0"),
     ],
     targets: [
