@@ -21,7 +21,7 @@ DNSNetwork is a collection of core networking classes used for the DNSFramework
 ## Requirements
 
 -   iOS 13.0+ / macOS 10.15+ / tvOS 13.0+ / watchOS 6.0+
--   Xcode 11.1+
+-   Xcode 11.6+
 -   Swift 5.1+
 
 ## Installation
@@ -34,17 +34,17 @@ Once you have your Swift package set up, adding Alamofire as a dependency is as 
 
 ```swift
 dependencies: [
-.package(url: "https://github.com/DoubleNode/DNSNetwork.git", from: "1.0.0")
+.package(url: "https://github.com/DoubleNode/DNSNetwork.git", from: "1.1.0")
 ]
 ```
 
 ## Dependencies
 
--   Alamofire v4.0.0+
--   AlamofireImage v5.0.0+
+-   Alamofire v5.0.2+
+-   AlamofireImage v4.0.1+
 -   AtomicSwift v1.2.1+
--   DNSCore v1.0.0+
--   DNSProtocols v1.0.0+
+-   DNSAppCore v1.1.0+
+-   Hippolyte v1.0.0+
 
 ## Credits
 
@@ -52,4 +52,4 @@ DNSNetwork and the DNSFramework are owned and maintained by Darren Ehlers and [D
 
 ## License
 
-DNSNetwork and the DNSFramework are Copyright © 2019 - 2016 Darren Ehlers and DoubleNode, LLC. All rights reserved.
+DNSNetwork and the DNSFramework are Copyright © 2020 - 2016 Darren Ehlers and DoubleNode, LLC. All rights reserved.

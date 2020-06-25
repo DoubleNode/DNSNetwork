@@ -1,5 +1,11 @@
-// swift-tools-version:5.1
-// The swift-tools-version declares the minimum version of Swift required to build this package.
+// swift-tools-version:5.3
+//
+//  Package.swift
+//  DoubleNode Swift Framework (DNSFramework) - DNSNetwork
+//
+//  Created by Darren Ehlers.
+//  Copyright © 2020 - 2016 DoubleNode.com. All rights reserved.
+//
 
 import PackageDescription
 
@@ -22,7 +28,7 @@ let package = Package(
         .package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.0.2"),
         .package(url: "https://github.com/Alamofire/AlamofireImage.git", .exact("4.0.1")),
         .package(url: "https://github.com/MarioIannotta/AtomicSwift.git", from: "1.0.0"),
-        .package(url: "https://github.com/DoubleNode/DNSAppCore.git", from: "1.0.4"),
+        .package(url: "https://github.com/DoubleNode/DNSAppCore.git", from: "1.1.0"),
         .package(url: "https://github.com/JanGorman/Hippolyte.git", from: "1.0.0"),
     ],
     targets: [
@@ -33,6 +39,12 @@ let package = Package(
             dependencies: ["Alamofire", "AlamofireImage", "AtomicSwift", "DNSAppCore"]),
         .testTarget(
             name: "DNSNetworkTests",
-            dependencies: ["DNSNetwork", "Hippolyte"]),
-    ]
+            dependencies: ["DNSNetwork", "Hippolyte"],
+            resources: [
+                .copy("Assets/DNSGravatar.loadImage001.validImageResponse.jpg"),
+                .copy("Assets/DNSGravatar.loadImage002.invalidImageResponse.jpg"),
+                .copy("Assets/UIImageViewGravatar.dnsLoadGravatar001.validImageResponse.jpg")
+            ]),
+    ],
+    swiftLanguageVersions: [.v5]
 )
