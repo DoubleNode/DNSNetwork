@@ -1,9 +1,9 @@
 //
 //  DNSAppNetworkGlobalsTests.m
-//  DNSCoreTests
+//  DoubleNode Swift Framework (DNSFramework) - DNSNetworkTests
 //
-//  Created by Darren Ehlers on 10/23/16.
-//  Copyright © 2019 - 2016 DoubleNode.com. All rights reserved.
+//  Created by Darren Ehlers.
+//  Copyright © 2020 - 2016 DoubleNode.com. All rights reserved.
 //
 
 import XCTest

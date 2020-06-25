@@ -1,9 +1,9 @@
 //
 //  DNSSessionManager.swift
-//  DNSCore
+//  DoubleNode Swift Framework (DNSFramework) - DNSNetwork
 //
-//  Created by Darren Ehlers on 10/14/19.
-//  Copyright © 2019 DoubleNode.com. All rights reserved.
+//  Created by Darren Ehlers.
+//  Copyright © 2020 - 2016 DoubleNode.com. All rights reserved.
 //
 
 import Alamofire
