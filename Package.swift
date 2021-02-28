@@ -29,7 +29,9 @@ let package = Package(
         .package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.0.2"),
         .package(url: "https://github.com/Alamofire/AlamofireImage.git", from: "4.0.1"),
         .package(url: "https://github.com/DoubleNodeOpen/AtomicSwift.git", from: "1.2.2"),
-        .package(url: "https://github.com/DoubleNode/DNSAppCore.git", from: "1.3.0"),
+        .package(url: "https://github.com/DoubleNode/DNSAppCore.git", from: "1.4.0"),
+        .package(url: "https://github.com/DoubleNode/DNSCore.git", from: "1.4.0"),
+        .package(url: "https://github.com/DoubleNode/DNSCoreThreading.git", from: "1.4.0"),
         .package(url: "https://github.com/JanGorman/Hippolyte.git", from: "1.0.0"),
     ],
     targets: [
@@ -37,7 +39,10 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "DNSNetwork",
-            dependencies: ["Alamofire", "AlamofireImage", "AtomicSwift", "DNSAppCore"]),
+            dependencies: [
+                "Alamofire", "AlamofireImage", "AtomicSwift", "DNSAppCore", "DNSCore",
+                "DNSCoreThreading"
+            ]),
         .testTarget(
             name: "DNSNetworkTests",
             dependencies: ["DNSNetwork", "Hippolyte"],
