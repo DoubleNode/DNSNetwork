@@ -16,13 +16,11 @@ public extension UIImageView {
         let gravatar = DNSGravatar()
         gravatar.email = email
         gravatar.size = (width > height) ? UInt(width) : UInt(height)
-
         gravatar.loadImage { (image) in
             guard image != nil else {
                 block?(false)
                 return
             }
-
             self.image = image
             block?(true)
         }

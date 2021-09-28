@@ -39,28 +39,22 @@ public class DNSGravatar {
                 block?(nil)
                 return
             }
-
             do {
                 block?(try response.result.get())
-            } catch {
-
-            }
+            } catch { }
         }
     }
 
     func generateUrl() -> URL {
         let avatarId = email?.dnsMD5() ?? "00000000000000000000000000000000"
-
         return buildUrl("/\(avatarId)?")
     }
 
     func buildUrl(_ avatarUrl: String) -> URL {
         var urlString = baseUrl + avatarUrl
-
         if size != nil {
             urlString += "&size=\(size!)"
         }
-
         urlString += "&rating=\(rating)"
 
         switch defaultType {
@@ -72,11 +66,9 @@ public class DNSGravatar {
         case .retro:        urlString += "&default=retro"
         case .blank:        urlString += "&default=blank"
         }
-
         if forceDefault {
             urlString += "&forcedefault=y"
         }
-
         return URL(string: urlString)!
     }
 }
