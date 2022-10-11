@@ -1,4 +1,4 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.7
 //
 //  Package.swift
 //  DoubleNode Swift Framework (DNSFramework) - DNSNetwork
@@ -12,10 +12,10 @@ import PackageDescription
 let package = Package(
     name: "DNSNetwork",
     platforms: [
-        .iOS(.v13),
-        .tvOS(.v13),
+        .iOS(.v15),
+        .tvOS(.v15),
         .macOS(.v10_15),
-        .watchOS(.v6),
+        .watchOS(.v9),
     ],
     products: [
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
@@ -29,10 +29,10 @@ let package = Package(
         .package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.4.4"),
         .package(url: "https://github.com/Alamofire/AlamofireImage.git", from: "4.2.0"),
         .package(url: "https://github.com/DoubleNodeOpen/AtomicSwift.git", from: "1.2.2"),
-        .package(url: "https://github.com/DoubleNode/DNSAppCore.git", from: "1.8.0"),
-        .package(url: "https://github.com/DoubleNode/DNSBaseTheme.git", from: "1.8.0"),
-        .package(url: "https://github.com/DoubleNode/DNSCore.git", from: "1.8.0"),
-        .package(url: "https://github.com/DoubleNode/DNSCoreThreading.git", from: "1.8.0"),
+        .package(url: "https://github.com/DoubleNode/DNSAppCore.git", from: "1.10.0"),
+        .package(url: "https://github.com/DoubleNode/DNSBaseTheme.git", from: "1.10.0"),
+        .package(url: "https://github.com/DoubleNode/DNSCore.git", from: "1.10.0"),
+        .package(url: "https://github.com/DoubleNode/DNSCoreThreading.git", from: "1.10.0"),
         .package(url: "https://github.com/JanGorman/Hippolyte.git", from: "1.4.0"),
     ],
     targets: [
