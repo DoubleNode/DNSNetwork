@@ -6,8 +6,11 @@
 //  Copyright © 2020 - 2016 DoubleNode.com. All rights reserved.
 //
 
+import DNSBaseTheme
+import DNSCore
 import DNSCoreThreading
 import Hippolyte
+import UIKit
 import XCTest
 
 @testable import DNSNetwork
@@ -46,7 +49,7 @@ class UIImageViewGravatarTests: XCTestCase {
         let path = localPath(for: "DNSGravatar.loadImage001.validImageResponse.jpg")
         let data = try Data(contentsOf: path!)
 
-        _ = DNSSynchronize {
+        DNSSynchronize(with: self, andRun: {
             let response = StubResponse.Builder()
                 .stubResponse(withStatusCode: 200)
                 .addBody(data)
@@ -71,6 +74,6 @@ class UIImageViewGravatarTests: XCTestCase {
             self.wait(for: [stubCalled], timeout: 10.0)
 
             XCTAssertNotNil(self.sut.image)
-        }
+        }).run()
     }
 }

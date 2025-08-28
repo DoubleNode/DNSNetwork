@@ -14,7 +14,7 @@ public protocol DNSSessionManagerProtocol {
 
     func serverError(with httpResponse: HTTPURLResponse, and responseObject: Any?)
     func dataError(with errorData: Data, and errorMessage: String)
-    func unknownError(with error: Error)
+    func unknownError(with error: any Error)
     func noResponseError()
 }
 
