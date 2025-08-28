@@ -9,29 +9,29 @@
 import DNSBaseTheme
 import DNSCore
 import DNSCoreThreading
-import Hippolyte
+@preconcurrency import Hippolyte
 import UIKit
 import XCTest
 
 @testable import DNSNetwork
 
-class UIImageViewGravatarTests: XCTestCase {
+class UIImageViewGravatarTests: XCTestCase, @unchecked Sendable {
     let baseUrl = "https://gravatar.com/avatar"
     let defaultFrame = CGRect(x: 105, y: 23, width: 55, height: 73)
 
-    private var sut: UIImageView!
-    private var stubManager: Hippolyte!
+    nonisolated(unsafe) private var sut: UIImageView!
+    nonisolated(unsafe) private var stubManager: Hippolyte!
 
     override func setUp() {
         super.setUp()
         stubManager = Hippolyte.shared
-
-        sut = UIImageView()
-        sut.frame = defaultFrame
+        MainActor.assumeIsolated {
+            sut = UIImageView()
+            sut.frame = defaultFrame
+        }
     }
     override func tearDown() {
         sut = nil
-
         stubManager.stop()
         stubManager = nil
         super.tearDown()
@@ -64,16 +64,24 @@ class UIImageViewGravatarTests: XCTestCase {
             self.stubManager.start()
 
             let stubCalled = self.expectation(description: "stub called")
-
             let value: String = "loadImage_withValidEmail@doublenode.com"
 
-            self.sut.dnsLoadGravatar(for: value) { (_) in
-                stubCalled.fulfill()
+            // Call dnsLoadGravatar on MainActor
+            DispatchQueue.main.async {
+                self.sut.dnsLoadGravatar(for: value) { (_) in
+                    stubCalled.fulfill()
+                }
             }
 
             self.wait(for: [stubCalled], timeout: 10.0)
 
-            XCTAssertNotNil(self.sut.image)
+            // Check image on MainActor
+            let expectation = self.expectation(description: "image check")
+            DispatchQueue.main.async {
+                XCTAssertNotNil(self.sut.image)
+                expectation.fulfill()
+            }
+            self.wait(for: [expectation], timeout: 1.0)
         }).run()
     }
 }

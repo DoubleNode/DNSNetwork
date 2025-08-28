@@ -7,14 +7,14 @@
 //
 
 import Alamofire
-import AtomicSwift
+@preconcurrency import AtomicSwift
 import DNSAppCore
 import DNSCore
 import DNSCoreThreading
 import Foundation
 import SystemConfiguration.CaptiveNetwork
 
-public class DNSAppNetworkGlobals: DNSAppGlobals {
+public class DNSAppNetworkGlobals: DNSAppGlobals, @unchecked Sendable {
 
     var reachabilityManager: NetworkReachabilityManager? { // NetworkReachabilityManager(host: "apple.com")
         willSet {
@@ -45,8 +45,8 @@ public class DNSAppNetworkGlobals: DNSAppGlobals {
 
     func utilityStartListening() {
         // swiftlint:disable:next line_length
-        reachabilityManager?.startListening(onUpdatePerforming: { (status: NetworkReachabilityManager.NetworkReachabilityStatus) in
-            self.utilityReachabilityStatusChanged(status: status)
+        reachabilityManager?.startListening(onUpdatePerforming: { [weak self] (status: NetworkReachabilityManager.NetworkReachabilityStatus) in
+            self?.utilityReachabilityStatusChanged(status: status)
         })
     }
     func utilityStopListening() {
@@ -59,7 +59,7 @@ public class DNSAppNetworkGlobals: DNSAppGlobals {
         case .unknown:
             reachabilityStatus = .unknown
         case .reachable(.cellular), .reachable(.ethernetOrWiFi):
-            var successCount = 0
+            let successCount = Atomic<Int>(wrappedValue: 0)
             let checkDomains = [ "www.apple.com", "apple.com", "www.appleiphonecell.com" ]
 
             _ = DNSThreadingGroup.run(block: { threadingGroup in
@@ -76,20 +76,20 @@ public class DNSAppNetworkGlobals: DNSAppGlobals {
                             case .failure:
                                 thread.done()
                             case .success:
-                                successCount += 1
+                                successCount.wrappedValue += 1
                                 thread.done()
                             }
                         }
                     }
                     threadingGroup.run(thread)
                 }
-            }, then: { (_) in
-                let successPercent  = (successCount / checkDomains.count) * 100
+            }, then: { [weak self] (_) in
+                let successPercent  = (successCount.wrappedValue / checkDomains.count) * 100
                 let withoutInternet = successPercent > 75
                 if status == .reachable(.cellular) {
-                    self.reachabilityStatus = (withoutInternet ? .reachableViaWWANWithoutInternet : .reachableViaWWAN)
+                    self?.reachabilityStatus = (withoutInternet ? .reachableViaWWANWithoutInternet : .reachableViaWWAN)
                 } else if status == .reachable(.ethernetOrWiFi) {
-                    self.reachabilityStatus = (withoutInternet ? .reachableViaWiFiWithoutInternet : .reachableViaWiFi)
+                    self?.reachabilityStatus = (withoutInternet ? .reachableViaWiFiWithoutInternet : .reachableViaWiFi)
                 }
             })
         }

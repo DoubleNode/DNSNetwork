@@ -8,14 +8,14 @@
 
 import Alamofire
 import DNSCoreThreading
-import Hippolyte
-import UIKit
-import XCTest
+@preconcurrency import Hippolyte
+@preconcurrency import UIKit
+@preconcurrency import XCTest
 
 @testable import DNSNetwork
 
-class DNSNetworkIntegrationTests: XCTestCase {
-    private var stubManager: Hippolyte!
+class DNSNetworkIntegrationTests: XCTestCase, @unchecked Sendable {
+    nonisolated(unsafe) private var stubManager: Hippolyte!
     
     override func setUp() {
         super.setUp()
@@ -49,20 +49,23 @@ class DNSNetworkIntegrationTests: XCTestCase {
             self.stubManager.add(stubbedRequest: request)
             self.stubManager.start()
             
-            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
             let completionExpectation = self.expectation(description: "Image loaded")
             
-            imageView.dnsLoadGravatar(for: "loadImage_withValidEmail@doublenode.com") { success in
-                XCTAssertTrue(success)
-                XCTAssertNotNil(imageView.image)
-                completionExpectation.fulfill()
+            // Create imageView and call dnsLoadGravatar on MainActor
+            DispatchQueue.main.async {
+                let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+                imageView.dnsLoadGravatar(for: "loadImage_withValidEmail@doublenode.com") { success in
+                    XCTAssertTrue(success)
+                    XCTAssertNotNil(imageView.image)
+                    completionExpectation.fulfill()
+                }
             }
             
             self.wait(for: [completionExpectation], timeout: 10.0)
         }).run()
     }
     
-    func test_integration_DNSAppNetworkGlobalsWithReachability_shouldHandleStatusChanges() {
+    @MainActor func test_integration_DNSAppNetworkGlobalsWithReachability_shouldHandleStatusChanges() {
         let globals = DNSAppNetworkGlobals()
         let statusChangeExpectation = expectation(description: "Status change notification")
         
@@ -104,13 +107,13 @@ class DNSNetworkIntegrationTests: XCTestCase {
                 "user3@example.com"
             ]
             
-            let expectedHashes = [
+            let _ = [
                 "e7c16b0d5e5e8c8b2b6b1ef1c4c4f1e0", // user1@example.com MD5 (placeholder)
                 "f9c16b0d5e5e8c8b2b6b1ef1c4c4f1e1", // user2@example.com MD5 (placeholder)
                 "a1c16b0d5e5e8c8b2b6b1ef1c4c4f1e2"  // user3@example.com MD5 (placeholder)
             ]
             
-            for (index, email) in emails.enumerated() {
+            for (_, email) in emails.enumerated() {
                 let response = StubResponse.Builder()
                     .stubResponse(withStatusCode: 200)
                     .addBody(data)
@@ -149,8 +152,8 @@ class DNSNetworkIntegrationTests: XCTestCase {
             group.wait()
             
             // Verify all requests succeeded
-            for (index, result) in results.enumerated() {
-                XCTAssertNotNil(result, "Request \\(index) should have succeeded")
+            for result in results {
+                XCTAssertNotNil(result, "Request should have succeeded")
             }
         }).run()
     }
@@ -250,7 +253,7 @@ class DNSNetworkIntegrationTests: XCTestCase {
         XCTAssertNil(weakCodeLocation, "DNSNetworkCodeLocation should be deallocated")
     }
     
-    func test_integration_threadSafety_shouldHandleConcurrentAccess() {
+    @MainActor func test_integration_threadSafety_shouldHandleConcurrentAccess() {
         let gravatar = DNSGravatar()
         gravatar.email = "thread@safety.test"
         
@@ -258,15 +261,15 @@ class DNSNetworkIntegrationTests: XCTestCase {
         let concurrentQueue = DispatchQueue(label: "com.test.concurrent", attributes: .concurrent)
         let group = DispatchGroup()
         
+        let urlsQueue = DispatchQueue(label: "urls.queue")
         var urls: [URL] = []
-        let urlsLock = DispatchQueue(label: "com.test.urls.lock")
         
         // Launch multiple concurrent reads
         for _ in 0..<50 {
             group.enter()
             concurrentQueue.async {
                 let url = gravatar.gravatarUrl
-                urlsLock.sync {
+                urlsQueue.sync {
                     urls.append(url)
                 }
                 group.leave()
@@ -274,13 +277,19 @@ class DNSNetworkIntegrationTests: XCTestCase {
         }
         
         group.notify(queue: .main) {
-            // All URLs should be identical
-            let firstUrl = urls.first
-            for url in urls {
-                XCTAssertEqual(url, firstUrl, "All URLs should be identical in concurrent access")
+            urlsQueue.sync {
+                // All URLs should be identical
+                guard let firstUrl = urls.first else {
+                    XCTFail("Should have URLs")
+                    expectation.fulfill()
+                    return
+                }
+                for url in urls {
+                    XCTAssertEqual(url, firstUrl, "All URLs should be identical in concurrent access")
+                }
+                XCTAssertEqual(urls.count, 50, "Should have 50 URLs")
+                expectation.fulfill()
             }
-            XCTAssertEqual(urls.count, 50, "Should have 50 URLs")
-            expectation.fulfill()
         }
         
         waitForExpectations(timeout: 10.0)

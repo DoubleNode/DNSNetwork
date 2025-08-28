@@ -7,20 +7,24 @@
 //
 
 import Alamofire
-import XCTest
+@preconcurrency import XCTest
 
 @testable import DNSNetwork
 
-class DNSAppNetworkGlobalsTests: XCTestCase {
+@MainActor class DNSAppNetworkGlobalsTests: XCTestCase, @unchecked Sendable {
     private var sut: DNSAppNetworkGlobals!
 
     override func setUp() {
         super.setUp()
-        sut = DNSAppNetworkGlobals()
+        MainActor.assumeIsolated {
+            sut = DNSAppNetworkGlobals()
+        }
     }
     override func tearDown() {
-        sut?.utilityStopListening()
-        sut = nil
+        MainActor.assumeIsolated {
+            sut?.utilityStopListening()
+            sut = nil
+        }
         super.tearDown()
     }
 
@@ -103,11 +107,14 @@ class DNSAppNetworkGlobalsTests: XCTestCase {
         
         sut.utilityReachabilityStatusChanged(status: .reachable(.cellular))
         
-        waitForExpectations(timeout: 15.0) { _ in
+        waitForExpectations(timeout: 15.0) { [weak self] _ in
             NotificationCenter.default.removeObserver(observer)
             // Status should be set to one of the cellular statuses
-            XCTAssertTrue(self.sut.reachabilityStatus == .reachableViaWWAN || 
-                         self.sut.reachabilityStatus == .reachableViaWWANWithoutInternet)
+            guard let strongSelf = self else { return }
+            MainActor.assumeIsolated {
+                XCTAssertTrue(strongSelf.sut.reachabilityStatus == .reachableViaWWAN || 
+                             strongSelf.sut.reachabilityStatus == .reachableViaWWANWithoutInternet)
+            }
         }
     }
     
@@ -125,11 +132,14 @@ class DNSAppNetworkGlobalsTests: XCTestCase {
         
         sut.utilityReachabilityStatusChanged(status: .reachable(.ethernetOrWiFi))
         
-        waitForExpectations(timeout: 15.0) { _ in
+        waitForExpectations(timeout: 15.0) { [weak self] _ in
             NotificationCenter.default.removeObserver(observer)
             // Status should be set to one of the WiFi statuses
-            XCTAssertTrue(self.sut.reachabilityStatus == .reachableViaWiFi || 
-                         self.sut.reachabilityStatus == .reachableViaWiFiWithoutInternet)
+            guard let strongSelf = self else { return }
+            MainActor.assumeIsolated {
+                XCTAssertTrue(strongSelf.sut.reachabilityStatus == .reachableViaWiFi || 
+                             strongSelf.sut.reachabilityStatus == .reachableViaWiFiWithoutInternet)
+            }
         }
     }
     
@@ -142,8 +152,11 @@ class DNSAppNetworkGlobalsTests: XCTestCase {
             forName: .reachabilityStatusChanged,
             object: sut,
             queue: .main
-        ) { notification in
-            XCTAssertIdentical(notification.object as? DNSAppNetworkGlobals, self.sut)
+        ) { [weak self] notification in
+            guard let strongSelf = self else { return }
+            MainActor.assumeIsolated {
+                XCTAssertIdentical(notification.object as? DNSAppNetworkGlobals, strongSelf.sut)
+            }
             expectation.fulfill()
         }
         

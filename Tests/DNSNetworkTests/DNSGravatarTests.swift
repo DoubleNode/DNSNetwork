@@ -7,16 +7,16 @@
 //
 
 import DNSCoreThreading
-import Hippolyte
-import XCTest
+@preconcurrency import Hippolyte
+@preconcurrency import XCTest
 
 @testable import DNSNetwork
 
-class DNSGravatarTests: XCTestCase {
+class DNSGravatarTests: XCTestCase, @unchecked Sendable {
     let baseUrl = "https://gravatar.com/avatar"
 
-    private var sut: DNSGravatar!
-    private var stubManager: Hippolyte!
+    nonisolated(unsafe) private var sut: DNSGravatar!
+    nonisolated(unsafe) private var stubManager: Hippolyte!
 
     override func setUp() {
         super.setUp()

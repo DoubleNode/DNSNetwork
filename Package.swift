@@ -11,6 +11,7 @@ import PackageDescription
 
 let package = Package(
     name: "DNSNetwork",
+    defaultLocalization: "en",
     platforms: [
         .iOS(.v18),
         .tvOS(.v18),
@@ -74,5 +75,5 @@ let package = Package(
             ]
         ),
     ],
-    swiftLanguageModes: [.v5]
+    swiftLanguageModes: [.v6]
 )

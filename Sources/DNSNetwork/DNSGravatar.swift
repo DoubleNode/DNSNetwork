@@ -12,7 +12,7 @@ import UIKit
 
 public typealias DNSImageBlock = (UIImage?) -> Void
 
-public class DNSGravatar {
+public class DNSGravatar: @unchecked Sendable {
     let baseUrl = "https://gravatar.com/avatar"
 
     public enum Rating {
