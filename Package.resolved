@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Alamofire/Alamofire.git",
       "state" : {
-        "revision" : "bc268c28fb170f494de9e9927c371b8342979ece",
-        "version" : "5.7.1"
+        "revision" : "513364f870f6bfc468f9d2ff0a95caccc10044c5",
+        "version" : "5.10.2"
       }
     },
     {
@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Alamofire/AlamofireImage.git",
       "state" : {
-        "revision" : "98cbb00ce0ec5fc8e52a5b50a6bfc08d3e5aee10",
-        "version" : "4.2.0"
+        "revision" : "1eaf3b6c6882bed10f6e7b119665599dd2329aa1",
+        "version" : "4.3.0"
       }
     },
     {
@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/DoubleNodeOpen/AnimatedField.git",
       "state" : {
-        "revision" : "4d07161d4219a56b0e29390316308ff630633add",
-        "version" : "2.5.50"
+        "revision" : "978a46e23c6a7a73dd5324531daf3b63edb5f44e",
+        "version" : "2.5.69"
       }
     },
     {
@@ -41,8 +41,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/DoubleNodeOpen/AtomicSwift.git",
       "state" : {
-        "revision" : "58fbeed795715d9c8dd7bb7ae1c36f37f2827089",
-        "version" : "1.2.2"
+        "revision" : "6efc4ec9370703f1e4d83ec13a9b7132f3b8ad60",
+        "version" : "1.2.3"
       }
     },
     {
@@ -50,17 +50,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/DoubleNode/DNSAppCore.git",
       "state" : {
-        "revision" : "64ca0c752ca516953b4167c274d131e834401bef",
-        "version" : "1.11.0"
-      }
-    },
-    {
-      "identity" : "dnsbasetheme",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/DoubleNode/DNSBaseTheme.git",
-      "state" : {
-        "revision" : "5aca1f0203414494cc47bf5bffecb57c07e898ee",
-        "version" : "1.11.0"
+        "revision" : "2971d8b177bf7fc355a292b745e2060455895f4d",
+        "version" : "1.12.0"
       }
     },
     {
@@ -68,8 +59,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/DoubleNode/DNSBlankNetwork.git",
       "state" : {
-        "revision" : "43875007256fa2f1e8676720df591391a821d9d4",
-        "version" : "1.11.0"
+        "revision" : "369cfe7fa2a4f89ff1182f83151d0baa10ce3a3b",
+        "version" : "1.12.0"
       }
     },
     {
@@ -77,8 +68,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/DoubleNode/DNSBlankSystems.git",
       "state" : {
-        "revision" : "99b8c6385da1ed3a5ef8862693b2e13381900183",
-        "version" : "1.11.0"
+        "revision" : "53afdd577f4727279a9cfe264ab33ceb51039ef3",
+        "version" : "1.12.0"
       }
     },
     {
@@ -86,8 +77,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/DoubleNode/DNSBlankWorkers.git",
       "state" : {
-        "revision" : "f8b19c044cd6111ec0547d567b2f33dfaf58a4dc",
-        "version" : "1.11.0"
+        "revision" : "3ca6e05793585912350433cb98eceac8fb1fa779",
+        "version" : "1.12.0"
       }
     },
     {
@@ -95,8 +86,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/DoubleNode/DNSCore.git",
       "state" : {
-        "revision" : "07c5b99590df46f947f3704e9e11a3fed0037704",
-        "version" : "1.11.2"
+        "revision" : "f3ce678397cf02195e94f759978a022acb80fc4f",
+        "version" : "1.12.0"
       }
     },
     {
@@ -104,8 +95,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/DoubleNode/DNSCoreThreading.git",
       "state" : {
-        "revision" : "0cca4d7c93f6f2000eae9033b02b6d87d73bfd99",
-        "version" : "1.11.0"
+        "revision" : "cc5e2487c762059be53d28f2679bf95a887dda43",
+        "version" : "1.12.0"
       }
     },
     {
@@ -113,8 +104,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/DoubleNode/DNSCrashNetwork.git",
       "state" : {
-        "revision" : "b4a41eafdef93678231b9c095cc9015531b55775",
-        "version" : "1.11.0"
+        "revision" : "5105b760bc1ab4ca4dbc3c3a6a880ff38cbb955a",
+        "version" : "1.12.0"
       }
     },
     {
@@ -122,8 +113,17 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/DoubleNode/DNSCrashWorkers.git",
       "state" : {
-        "revision" : "779379e5da02842a06ae1f0ee7fe4b93e3ef828d",
-        "version" : "1.11.0"
+        "revision" : "6c4a4d12ef62846619280fef93076d862589a7c4",
+        "version" : "1.12.0"
+      }
+    },
+    {
+      "identity" : "dnsdatacontracts",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/DoubleNode/DNSDataContracts.git",
+      "state" : {
+        "revision" : "5167d8a0671bd42a2913239ceb94da8cdc6aa684",
+        "version" : "1.12.0"
       }
     },
     {
@@ -131,8 +131,26 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/DoubleNode/DNSDataObjects.git",
       "state" : {
-        "revision" : "41858ba206c770af01a3aa57749fc9f1b35526d2",
-        "version" : "1.11.0"
+        "revision" : "8d3f98cc256463d5edb6266e7d2d848cc951d843",
+        "version" : "1.12.0"
+      }
+    },
+    {
+      "identity" : "dnsdatatypes",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/DoubleNode/DNSDataTypes.git",
+      "state" : {
+        "revision" : "a62a0f5af14ecbf936c14d71715110dfb30a37c8",
+        "version" : "1.12.0"
+      }
+    },
+    {
+      "identity" : "dnsdatauiobjects",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/DoubleNode/DNSDataUIObjects.git",
+      "state" : {
+        "revision" : "1b6f9e90d5aa09d9580a03c6614f47abc23fccd4",
+        "version" : "1.12.0"
       }
     },
     {
@@ -140,8 +158,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/DoubleNode/DNSError.git",
       "state" : {
-        "revision" : "351479999b4bf4e11977ee1432185e4ee6d7e6c7",
-        "version" : "1.11.0"
+        "revision" : "80c78e038c6365b55be6e310aaae4afba231e459",
+        "version" : "1.12.0"
       }
     },
     {
@@ -149,8 +167,26 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/DoubleNode/DNSProtocols.git",
       "state" : {
-        "revision" : "ae2a22281671683f6f633c7bcd5493b06cd98cdb",
-        "version" : "1.11.0"
+        "revision" : "2f35d9265cefeb65d4d24a8099840611412bc0db",
+        "version" : "1.12.0"
+      }
+    },
+    {
+      "identity" : "dnsthemeobjects",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/DoubleNode/DNSThemeObjects.git",
+      "state" : {
+        "revision" : "22b799ac747b4dbcac6f6f25aba4cc670e94a59c",
+        "version" : "1.12.0"
+      }
+    },
+    {
+      "identity" : "dnsthemetypes",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/DoubleNode/DNSThemeTypes.git",
+      "state" : {
+        "revision" : "dcb365de70c827b0870d49f9c5f298551556a274",
+        "version" : "1.12.1"
       }
     },
     {
@@ -158,8 +194,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/kaishin/Gifu.git",
       "state" : {
-        "revision" : "82da0086dea14ca9afc9801234ad8dc4cd9e2738",
-        "version" : "3.4.1"
+        "revision" : "f19726eaf0dfa4dbce4d3f80293c9d38c2acba53",
+        "version" : "4.0.1"
       }
     },
     {
@@ -172,21 +208,21 @@
       }
     },
     {
-      "identity" : "keyedcodable",
+      "identity" : "phonenumberkit",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/dgrzeszczak/KeyedCodable.git",
+      "location" : "https://github.com/DoubleNodeOpen/PhoneNumberKit",
       "state" : {
-        "revision" : "7e24e26cf3a844ee0dbcdbcc8c78ed45f9570e69",
-        "version" : "3.1.2"
+        "revision" : "ce40a19644c4c1c3132c0092a70105b5c9d9fa84",
+        "version" : "4.1.5"
       }
     },
     {
       "identity" : "sfsymbol",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Nirma/SFSymbol",
+      "location" : "https://github.com/DoubleNodeOpen/SFSymbol",
       "state" : {
-        "revision" : "c18f260b9b69d1c24e40ad367e8a589563fb8f3d",
-        "version" : "2.2.0"
+        "revision" : "b24137abd255db8a128326f73ab9c0bad1b81df2",
+        "version" : "3.0.1"
       }
     },
     {
@@ -194,8 +230,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Juanpe/SkeletonView.git",
       "state" : {
-        "revision" : "739a4f5d78731bebc48811c75fa9e1f4c4cef23e",
-        "version" : "1.30.4"
+        "revision" : "2f5274827d310e32c09325dd3e0007120940988e",
+        "version" : "1.31.0"
       }
     },
     {
@@ -203,17 +239,17 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/DoubleNodeOpen/swift-mask-textfield.git",
       "state" : {
-        "revision" : "a5546b7ae52f8d6e0b067c25606f3455056b92a5",
-        "version" : "1.1.2"
+        "revision" : "e94fb6aa2eebd414b8cfe585434b9cdd08ff1a30",
+        "version" : "1.1.3"
       }
     },
     {
       "identity" : "swiftybeaver",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/SwiftyBeaver/SwiftyBeaver.git",
+      "location" : "https://github.com/DoubleNodeOpen/SwiftyBeaver.git",
       "state" : {
-        "revision" : "1080914828ef1c9ca9cd2bad50667b3d847dabff",
-        "version" : "2.0.0"
+        "revision" : "077d7ba1389768c32d6e1c190af6bfb93fb20bc2",
+        "version" : "2.1.2"
       }
     },
     {

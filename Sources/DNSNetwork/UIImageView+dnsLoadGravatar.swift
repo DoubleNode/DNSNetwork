@@ -8,8 +8,8 @@
 
 import Alamofire
 import AlamofireImage
-import DNSBaseTheme
 import DNSCore
+import DNSThemeObjects
 import UIKit
 
 public extension UIImageView {
